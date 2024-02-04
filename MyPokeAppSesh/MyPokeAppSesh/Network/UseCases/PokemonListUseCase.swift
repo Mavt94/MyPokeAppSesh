@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol PokemonListResultsUseCaseActions {
-    func getPokemonListResults() async throws -> [PokemonDetailResponse]
+    func getPokemonListResults() async throws -> [PokemonDetailResponseBO]
 }
 
 public final class PokemonListUseCase: PokemonListResultsUseCaseActions {
@@ -18,7 +18,7 @@ public final class PokemonListUseCase: PokemonListResultsUseCaseActions {
         self.repository = repository
     }
     
-    public func getPokemonListResults() async throws -> [PokemonDetailResponse] {
+    public func getPokemonListResults() async throws -> [PokemonDetailResponseBO] {
         return try await repository.getPokemonDetail()
     }
 }

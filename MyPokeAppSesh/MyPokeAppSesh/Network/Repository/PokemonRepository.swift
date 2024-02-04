@@ -15,8 +15,8 @@ enum NetworkError: Error {
 }
 
 public protocol PokemonRepositoryActions {
-    func listPokemonResults() async throws -> [PokemonListItemResponse]
-    func getPokemonDetail() async throws -> [PokemonDetailResponse]
+    func listPokemonResults() async throws -> [PokemonListItemResponseBO]
+    func getPokemonDetail() async throws -> [PokemonDetailResponseBO]
 }
 
 public final class PokemonNetwork: PokemonRepositoryActions {
@@ -24,7 +24,7 @@ public final class PokemonNetwork: PokemonRepositoryActions {
     public init() {
     }
     
-    public func listPokemonResults() async throws -> [PokemonListItemResponse] {
+    public func listPokemonResults() async throws -> [PokemonListItemResponseBO] {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=151") else { throw NetworkError.invalidURL }
         
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -33,18 +33,23 @@ public final class PokemonNetwork: PokemonRepositoryActions {
         
         do {
             let decoder = JSONDecoder()
-            return try decoder.decode(PokemonListResponse.self, from: data).results ?? []
+            let list = try decoder.decode(PokemonListResponseDTO.self, from: data).results
+            if let returnList = list?.compactMap({ $0.toBO() }) {
+                return returnList
+            } else {
+                return []
+            }
         } catch {
             throw NetworkError.invalidData
         }
     }
     
-    public func getPokemonDetail() async throws -> [PokemonDetailResponse] {
-        var pokemonDetails: [PokemonDetailResponse] = []
+    public func getPokemonDetail() async throws -> [PokemonDetailResponseBO] {
+        var pokemonDetails: [PokemonDetailResponseBO] = []
         let pokemonList = try await listPokemonResults()
         
         for item in pokemonList {
-            guard let url = URL(string: item.url ?? "") else { throw NetworkError.invalidURL }
+            guard let url = URL(string: item.url) else { throw NetworkError.invalidURL }
             
             let (data, response) = try await URLSession.shared.data(from: url)
             
@@ -52,8 +57,10 @@ public final class PokemonNetwork: PokemonRepositoryActions {
             
             do {
                 let decoder = JSONDecoder()
-                let detail = try decoder.decode(PokemonDetailResponse.self, from: data)
-                pokemonDetails.append(detail)
+                let detail = try decoder.decode(PokemonDetailResponseDTO.self, from: data)
+                if let detailToAppend = detail.toBO() {
+                    pokemonDetails.append(detailToAppend)
+                }
             } catch {
                 throw NetworkError.invalidData
             }

@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct MyPokeAppSeshApp: App {
-    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             PokemonListView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
