@@ -8,5 +8,13 @@
 import Foundation
 
 public struct PokemonListResponseDTO: Codable {
-    public let results: [PokemonListItemResponseDTO]?
+    public let results: [PokemonResultItemResponseDTO]?
+    public let nextPage: String?
+    public let previousPage: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case results = "results"
+        case nextPage = "next"
+        case previousPage = "previous"
+    }
 }

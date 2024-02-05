@@ -34,16 +34,31 @@ struct PokemonListView: View {
         case let .loaded(model):
             NavigationView {
                 ScrollView {
-                    LazyVStack(spacing: 16) {
-                        ForEach(model.rows, id: \.id) { row in
-                            NavigationLink {
-                                DetailPokemon(model: row)
-                            } label: {
-                                PokemonCellView(model: row)
+                    ScrollViewReader { reader in
+                        LazyVStack(spacing: 16) {
+                            ForEach(model.rows, id: \.id) { row in
+                                NavigationLink {
+                                    DetailPokemon(model: row)
+                                } label: {
+                                    PokemonCellView(model: row)
+                                        .id(row.id)
+                                        .onAppear {
+                                            Task {
+                                                if viewModel.hasReachedEnd(pokemon: row, model: model) {
+                                                    print("Last item")
+//                                                    reader.scrollTo(row.id, anchor: .bottom)
+                                                    await viewModel.loadNextPage(url: model.nextPage, model: model)
+                                                }
+                                            }
+                                        }
+                                }
+                            }
+                            if viewModel.loadingList {
+                                ProgressView()
                             }
                         }
+                        .padding(.horizontal, 8)
                     }
-                    .padding(.horizontal, 8)
                 }
             }
         case .error(let error):

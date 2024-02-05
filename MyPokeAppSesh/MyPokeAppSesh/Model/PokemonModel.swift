@@ -8,12 +8,25 @@
 import Foundation
 
 final class PokemonModel {
+    var list: PokemonListResponseBO
     var items: [PokemonDetailResponseBO]
+    var nextPage: String
 
     lazy var rows: [Pokemon] = generateRows()
     
-    public init(_ items: [PokemonDetailResponseBO]) {
+    public init(list: PokemonListResponseBO, items: [PokemonDetailResponseBO]) {
+        self.list = list
         self.items = items
+        nextPage = list.nextPage ?? ""
+    }
+    
+    func addRows(_ newItems: [PokemonDetailResponseBO]) {
+        items.append(contentsOf: newItems)
+        rows = generateRows()
+    }
+    
+    func addNewPage(newPage: String) {
+        nextPage = newPage
     }
 
     private func generateRows() -> [Pokemon] {

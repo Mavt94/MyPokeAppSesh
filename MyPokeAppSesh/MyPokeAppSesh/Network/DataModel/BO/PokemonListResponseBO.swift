@@ -8,9 +8,13 @@
 import Foundation
 
 public struct PokemonListResponseBO {
-    public let results: [PokemonListItemResponseBO]
+    public let results: [PokemonResultItemResponseBO]
+    public let nextPage: String?
+    public let previousPage: String?
     
-    public init(results: [PokemonListItemResponseBO]) {
+    public init(results: [PokemonResultItemResponseBO], nextPage: String?, previousPage: String?) {
         self.results = results
+        self.nextPage = nextPage
+        self.previousPage = previousPage
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PokemonListItemResponseBO.swift
+//  PokemonResultItemResponseBO.swift
 //  MyPokeAppSesh
 //
 //  Created by Manuel Vera Trinidad on 4/2/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PokemonListItemResponseBO {
+public struct PokemonResultItemResponseBO {
     public let name: String
     public let url: String
     

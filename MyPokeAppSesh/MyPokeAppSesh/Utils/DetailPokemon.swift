@@ -21,7 +21,7 @@ struct DetailPokemon: View {
                         .frame(width: 300, height: 300)
                         .background(
                             Circle()
-                                .foregroundStyle(Color(hex: model.colorForType(model.principalType)).opacity(0.4))
+                                .foregroundStyle(Color(hex: model.colorForType(model.principalType)).opacity(0.8))
                         )
                 } placeholder: {
                     EmptyView()
@@ -52,6 +52,8 @@ struct DetailPokemon: View {
                         }
                         .padding(.vertical, 16)
                         .frame(maxWidth: .infinity)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.gray, lineWidth: 4)
@@ -67,10 +69,13 @@ struct DetailPokemon: View {
                         }
                         .padding(.vertical, 16)
                         .frame(maxWidth: .infinity)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.gray, lineWidth: 4)
                         )
+                        
                     }
                 }
                 
@@ -87,7 +92,7 @@ struct DetailPokemon: View {
                             .frame(width: 150, height: 150)
                             .background(
                                 Circle()
-                                    .foregroundStyle(Color(hex: model.colorForType(model.principalType)).opacity(0.4))
+                                    .foregroundStyle(Color(hex: model.colorForType(model.principalType)).opacity(0.8))
                             )
                     } placeholder: {
                         EmptyView()
@@ -95,6 +100,7 @@ struct DetailPokemon: View {
                     
                 }
                 .padding(.leading, 16)
+                .background(.white)
                 .frame(maxWidth: .infinity)
                 .frame(height: 130)
                 .clipShape(RoundedRectangle(cornerRadius: 55))
@@ -102,9 +108,14 @@ struct DetailPokemon: View {
                     RoundedRectangle(cornerRadius: 55)
                         .stroke(Color.gray, lineWidth: 4)
                 )
+                
             }
+            
             .padding(.horizontal, 16)
         }
+        .background(
+            Color(hex: model.colorForType(model.principalType)).opacity(0.4)
+        )
     }
 }
 
