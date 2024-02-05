@@ -8,19 +8,19 @@
 import Foundation
 
 final class PokemonModel {
-    var list: PokemonListResponseBO
-    var items: [PokemonDetailResponseBO]
+    var list: PokemonListResponse
+    var items: [PokemonDetailResponse]
     var nextPage: String
 
     lazy var rows: [Pokemon] = generateRows()
     
-    public init(list: PokemonListResponseBO, items: [PokemonDetailResponseBO]) {
+    public init(list: PokemonListResponse, items: [PokemonDetailResponse]) {
         self.list = list
         self.items = items
         nextPage = list.nextPage ?? ""
     }
     
-    func addRows(_ newItems: [PokemonDetailResponseBO]) {
+    func addRows(_ newItems: [PokemonDetailResponse]) {
         items.append(contentsOf: newItems)
         rows = generateRows()
     }
@@ -36,7 +36,7 @@ final class PokemonModel {
 
  extension PokemonModel {
      struct Pokemon {
-         let item: PokemonDetailResponseBO
+         let item: PokemonDetailResponse
          
          var id: Int {
              item.id
@@ -129,6 +129,6 @@ final class PokemonModel {
 // MARK: Mock
 extension PokemonModel.Pokemon {
     static func mock() -> PokemonModel.Pokemon {
-        return PokemonModel.Pokemon(item: PokemonDetailResponseBO.mock())
+        return PokemonModel.Pokemon(item: PokemonDetailResponse.mock())
     }
 }

@@ -24,7 +24,7 @@ struct PokemonCellView: View {
                     .foregroundStyle(.black)
                 HStack {
                     ForEach(model.types, id: \.self) { type in
-                        TypeTag(name: type, color: model.colorForType(type))
+                        TypeTagView(name: type, color: model.colorForType(type))
                     }
                 }
             }

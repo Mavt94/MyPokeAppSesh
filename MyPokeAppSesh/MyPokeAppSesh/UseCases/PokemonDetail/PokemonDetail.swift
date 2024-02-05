@@ -1,5 +1,5 @@
 //
-//  DetailPokemon.swift
+//  PokemonDetail.swift
 //  MyPokeAppSesh
 //
 //  Created by Manuel Vera Trinidad on 4/2/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailPokemon: View {
+struct PokemonDetail: View {
     
     var model: PokemonModel.Pokemon
     
@@ -34,7 +34,7 @@ struct DetailPokemon: View {
                         .font(.custom(Constants.Font.poppinsBold, size: 24))
                     HStack {
                         ForEach(model.types, id: \.self) { type in
-                            TypeTag(name: type, color: model.colorForType(type))
+                            TypeTagView(name: type, color: model.colorForType(type))
                         }
                     }
                     .padding(.vertical, 16)
@@ -120,5 +120,5 @@ struct DetailPokemon: View {
 }
 
 #Preview {
-    DetailPokemon(model: PokemonModel.Pokemon.mock())
+    PokemonDetail(model: PokemonModel.Pokemon.mock())
 }

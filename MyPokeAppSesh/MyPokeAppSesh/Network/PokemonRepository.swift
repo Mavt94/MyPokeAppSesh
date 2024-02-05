@@ -14,18 +14,12 @@ enum NetworkError: Error {
     case invalidData
 }
 
-public protocol PokemonRepositoryActions {
-    func pokemonListFirstLoad() async throws -> PokemonListResponseBO
-    func listPokemonResults(url: String) async throws -> PokemonListResponseBO
-    func getPokemonDetail(model: [PokemonResultItemResponseBO]) async throws -> [PokemonDetailResponseBO]
-}
-
-public final class PokemonNetwork: PokemonRepositoryActions {
+public final class PokemonRepository {
     
     public init() {
     }
     
-    public func pokemonListFirstLoad() async throws -> PokemonListResponseBO {
+    public func pokemonListFirstLoad() async throws -> PokemonListResponse {
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=10") else { throw NetworkError.invalidURL }
         
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -34,18 +28,14 @@ public final class PokemonNetwork: PokemonRepositoryActions {
         
         do {
             let decoder = JSONDecoder()
-            let list = try decoder.decode(PokemonListResponseDTO.self, from: data)
-            if let returnList = list.toBO() {
-                return returnList
-            }
+            
+            return try decoder.decode(PokemonListResponse.self, from: data)
         } catch {
             throw NetworkError.invalidData
         }
-        
-        return PokemonListResponseBO(results: [], nextPage: "", previousPage: "")
     }
     
-    public func listPokemonResults(url: String) async throws -> PokemonListResponseBO {
+    public func listPokemonResults(url: String) async throws -> PokemonListResponse {
         guard let url = URL(string: url) else { throw NetworkError.invalidURL }
         
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -54,19 +44,15 @@ public final class PokemonNetwork: PokemonRepositoryActions {
         
         do {
             let decoder = JSONDecoder()
-            let list = try decoder.decode(PokemonListResponseDTO.self, from: data)
-            if let returnList = list.toBO() {
-                return returnList
-            }
+            
+            return try decoder.decode(PokemonListResponse.self, from: data)
         } catch {
             throw NetworkError.invalidData
         }
-        
-        return PokemonListResponseBO(results: [], nextPage: "", previousPage: "")
     }
     
-    public func getPokemonDetail(model: [PokemonResultItemResponseBO]) async throws -> [PokemonDetailResponseBO] {
-        var pokemonDetails: [PokemonDetailResponseBO] = []
+    public func getPokemonDetail(model: [PokemonResultItemResponse]) async throws -> [PokemonDetailResponse] {
+        var pokemonDetails: [PokemonDetailResponse] = []
         
         for item in model {
             guard let url = URL(string: item.url) else { throw NetworkError.invalidURL }
@@ -77,10 +63,8 @@ public final class PokemonNetwork: PokemonRepositoryActions {
             
             do {
                 let decoder = JSONDecoder()
-                let detail = try decoder.decode(PokemonDetailResponseDTO.self, from: data)
-                if let detailToAppend = detail.toBO() {
-                    pokemonDetails.append(detailToAppend)
-                }
+                let detail = try decoder.decode(PokemonDetailResponse.self, from: data)
+                pokemonDetails.append(detail)
             } catch {
                 throw NetworkError.invalidData
             }

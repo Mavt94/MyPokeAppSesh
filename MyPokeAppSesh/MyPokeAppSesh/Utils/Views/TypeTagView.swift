@@ -1,5 +1,5 @@
 //
-//  TypeTag.swift
+//  TypeTagView.swift
 //  MyPokeAppSesh
 //
 //  Created by Manuel Vera Trinidad on 4/2/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TypeTag: View {
+struct TypeTagView: View {
     
     var name: String
     var color: String
@@ -26,5 +26,5 @@ struct TypeTag: View {
 }
 
 #Preview {
-    TypeTag(name: "fire", color: "EE8130")
+    TypeTagView(name: "fire", color: "EE8130")
 }
