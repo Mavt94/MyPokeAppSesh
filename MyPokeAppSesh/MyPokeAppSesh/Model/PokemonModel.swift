@@ -8,11 +8,11 @@
 import Foundation
 
 final class PokemonModel {
-    var items: [PokemonDetailResponse]
+    var items: [PokemonDetailResponseBO]
 
     lazy var rows: [Pokemon] = generateRows()
     
-    public init(_ items: [PokemonDetailResponse]) {
+    public init(_ items: [PokemonDetailResponseBO]) {
         self.items = items
     }
 
@@ -23,10 +23,18 @@ final class PokemonModel {
 
  extension PokemonModel {
      struct Pokemon {
-         let item: PokemonDetailResponse
+         let item: PokemonDetailResponseBO
          
          var id: Int {
-             item.id ?? 0
+             item.id
+         }
+         
+         var baseExperience: String {
+             "Base exp - \(item.baseExperience)"
+         }
+         
+         var stats: [String] {
+             item.stats.map { "\($0.stat.name.capitalized) - \($0.baseStat)" }
          }
          
          var pokemonNumber: String {
@@ -34,15 +42,19 @@ final class PokemonModel {
          }
          
          var name: String {
-             item.name?.capitalized ?? ""
+             item.name.capitalized
          }
          
          var image: String {
-             item.sprites?.frontDefault ?? ""
+             item.sprites.frontDefault
+         }
+         
+         var imageShiny: String {
+             item.sprites.frontShiny
          }
          
          var types: [String] {
-             item.types?.compactMap { $0.type?.name } ?? []
+             item.types.compactMap { $0.type.name }
          }
          
          var principalType: String {
@@ -50,7 +62,7 @@ final class PokemonModel {
          }
          
          var backgroundColor: String {
-             colorForType(item.types?.first?.type?.name)
+             colorForType(item.types.first?.type.name)
          }
          
          func colorForType(_ typeName: String?) -> String {
@@ -97,3 +109,9 @@ final class PokemonModel {
      }
  }
 
+// MARK: Mock
+extension PokemonModel.Pokemon {
+    static func mock() -> PokemonModel.Pokemon {
+        return PokemonModel.Pokemon(item: PokemonDetailResponseBO.mock())
+    }
+}

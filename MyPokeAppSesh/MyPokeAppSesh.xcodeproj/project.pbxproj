@@ -28,6 +28,13 @@
 		34141AC52B70246B00ECA369 /* SpeciesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141AC42B70246B00ECA369 /* SpeciesMapper.swift */; };
 		34141AC72B70247400ECA369 /* SpritesMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141AC62B70247400ECA369 /* SpritesMapper.swift */; };
 		34141AC92B70248200ECA369 /* TypeElementMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141AC82B70248200ECA369 /* TypeElementMapper.swift */; };
+		34141AD22B70505E00ECA369 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141AD12B70505E00ECA369 /* Constants.swift */; };
+		34141AD52B7054C400ECA369 /* StatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141AD42B7054C400ECA369 /* StatDTO.swift */; };
+		34141AD72B7054D500ECA369 /* StatBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141AD62B7054D500ECA369 /* StatBO.swift */; };
+		34141AD92B7054DD00ECA369 /* StatMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141AD82B7054DD00ECA369 /* StatMapper.swift */; };
+		34141ADB2B7055D500ECA369 /* StatResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141ADA2B7055D500ECA369 /* StatResponseDTO.swift */; };
+		34141ADD2B7055E300ECA369 /* StatResponseBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141ADC2B7055E300ECA369 /* StatResponseBO.swift */; };
+		34141ADF2B7055F100ECA369 /* StatResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34141ADE2B7055F100ECA369 /* StatResponseMapper.swift */; };
 		3438B3F42B6D61D80047673C /* MyPokeAppSeshApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3438B3F32B6D61D80047673C /* MyPokeAppSeshApp.swift */; };
 		3438B3F82B6D61D90047673C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3438B3F72B6D61D90047673C /* Assets.xcassets */; };
 		3438B3FB2B6D61D90047673C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3438B3FA2B6D61D90047673C /* Preview Assets.xcassets */; };
@@ -63,6 +70,17 @@
 		34141AC42B70246B00ECA369 /* SpeciesMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesMapper.swift; sourceTree = "<group>"; };
 		34141AC62B70247400ECA369 /* SpritesMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritesMapper.swift; sourceTree = "<group>"; };
 		34141AC82B70248200ECA369 /* TypeElementMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeElementMapper.swift; sourceTree = "<group>"; };
+		34141ACE2B70503E00ECA369 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		34141ACF2B70503E00ECA369 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		34141AD02B70503E00ECA369 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		34141AD12B70505E00ECA369 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		34141AD32B70521A00ECA369 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		34141AD42B7054C400ECA369 /* StatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDTO.swift; sourceTree = "<group>"; };
+		34141AD62B7054D500ECA369 /* StatBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBO.swift; sourceTree = "<group>"; };
+		34141AD82B7054DD00ECA369 /* StatMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatMapper.swift; sourceTree = "<group>"; };
+		34141ADA2B7055D500ECA369 /* StatResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatResponseDTO.swift; sourceTree = "<group>"; };
+		34141ADC2B7055E300ECA369 /* StatResponseBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatResponseBO.swift; sourceTree = "<group>"; };
+		34141ADE2B7055F100ECA369 /* StatResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatResponseMapper.swift; sourceTree = "<group>"; };
 		3438B3F02B6D61D80047673C /* MyPokeAppSesh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPokeAppSesh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3438B3F32B6D61D80047673C /* MyPokeAppSeshApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPokeAppSeshApp.swift; sourceTree = "<group>"; };
 		3438B3F72B6D61D90047673C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +133,8 @@
 				34141AB82B7022CC00ECA369 /* SpeciesBO.swift */,
 				34141ABA2B7022D900ECA369 /* SpritesBO.swift */,
 				34141ABC2B7022E500ECA369 /* TypeElementBO.swift */,
+				34141AD62B7054D500ECA369 /* StatBO.swift */,
+				34141ADC2B7055E300ECA369 /* StatResponseBO.swift */,
 			);
 			path = BO;
 			sourceTree = "<group>";
@@ -128,6 +148,8 @@
 				34141AAC2B70214F00ECA369 /* SpeciesDTO.swift */,
 				34141AAE2B7021AB00ECA369 /* SpritesDTO.swift */,
 				34141AB02B7021EF00ECA369 /* TypeElementDTO.swift */,
+				34141AD42B7054C400ECA369 /* StatDTO.swift */,
+				34141ADA2B7055D500ECA369 /* StatResponseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -141,8 +163,21 @@
 				34141AC42B70246B00ECA369 /* SpeciesMapper.swift */,
 				34141AC62B70247400ECA369 /* SpritesMapper.swift */,
 				34141AC82B70248200ECA369 /* TypeElementMapper.swift */,
+				34141AD82B7054DD00ECA369 /* StatMapper.swift */,
+				34141ADE2B7055F100ECA369 /* StatResponseMapper.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		34141ACC2B704FE200ECA369 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				34141AD32B70521A00ECA369 /* Poppins-ExtraBold.ttf */,
+				34141ACE2B70503E00ECA369 /* Poppins-Bold.ttf */,
+				34141ACF2B70503E00ECA369 /* Poppins-Medium.ttf */,
+				34141AD02B70503E00ECA369 /* Poppins-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		3438B3E72B6D61D80047673C = {
@@ -164,12 +199,12 @@
 		3438B3F22B6D61D80047673C /* MyPokeAppSesh */ = {
 			isa = PBXGroup;
 			children = (
-				3438B4112B6E41430047673C /* Media */,
-				3438B4102B6DBE820047673C /* Utils */,
 				3438B40F2B6DBE6B0047673C /* Network */,
-				3438B4082B6DB7E30047673C /* ViewModel */,
-				3438B4072B6DB7DE0047673C /* View */,
 				3438B4062B6DB7D60047673C /* Model */,
+				3438B4072B6DB7DE0047673C /* View */,
+				3438B4082B6DB7E30047673C /* ViewModel */,
+				3438B4102B6DBE820047673C /* Utils */,
+				3438B4112B6E41430047673C /* Media */,
 				3438B3F32B6D61D80047673C /* MyPokeAppSeshApp.swift */,
 				3438B3F92B6D61D90047673C /* Preview Content */,
 			);
@@ -216,7 +251,6 @@
 				34141AA82B70200700ECA369 /* DataModel */,
 				340896B92B6E71E9002D6451 /* UseCases */,
 				3438B4212B6E62870047673C /* Repository */,
-				3438B41C2B6E60A50047673C /* ResponseModel */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -227,6 +261,7 @@
 				340896C02B7001FA002D6451 /* ColorExtension.swift */,
 				340896C22B7005DA002D6451 /* TypeTag.swift */,
 				34141AA62B70151D00ECA369 /* DetailPokemon.swift */,
+				34141AD12B70505E00ECA369 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -234,17 +269,11 @@
 		3438B4112B6E41430047673C /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				34141ACC2B704FE200ECA369 /* Font */,
 				3438B40D2B6DBA430047673C /* Images.xcassets */,
 				3438B3F72B6D61D90047673C /* Assets.xcassets */,
 			);
 			path = Media;
-			sourceTree = "<group>";
-		};
-		3438B41C2B6E60A50047673C /* ResponseModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ResponseModel;
 			sourceTree = "<group>";
 		};
 		3438B4212B6E62870047673C /* Repository */ = {
@@ -331,6 +360,7 @@
 				34141ABB2B7022D900ECA369 /* SpritesBO.swift in Sources */,
 				3438B4132B6E4C1C0047673C /* PokemonRepository.swift in Sources */,
 				34141AAF2B7021AB00ECA369 /* SpritesDTO.swift in Sources */,
+				34141AD22B70505E00ECA369 /* Constants.swift in Sources */,
 				34141AA72B70151D00ECA369 /* DetailPokemon.swift in Sources */,
 				34141AB92B7022CC00ECA369 /* SpeciesBO.swift in Sources */,
 				34141AC32B70245600ECA369 /* PokemonDetailResponseMapper.swift in Sources */,
@@ -338,22 +368,28 @@
 				34141AC72B70247400ECA369 /* SpritesMapper.swift in Sources */,
 				3438B3F42B6D61D80047673C /* MyPokeAppSeshApp.swift in Sources */,
 				340896C12B7001FA002D6451 /* ColorExtension.swift in Sources */,
+				34141AD52B7054C400ECA369 /* StatDTO.swift in Sources */,
 				34141AC12B70244700ECA369 /* PokemonListItemResponseMapper.swift in Sources */,
 				340896BD2B6E8F09002D6451 /* PokemonDetailResponseDTO.swift in Sources */,
 				34141AAD2B70214F00ECA369 /* SpeciesDTO.swift in Sources */,
 				34141ABF2B70243C00ECA369 /* PokemonListResponseMapper.swift in Sources */,
 				3438B4152B6E54AC0047673C /* PokemonListViewModel.swift in Sources */,
 				340896BF2B6EA401002D6451 /* PokemonListDataState.swift in Sources */,
+				34141AD72B7054D500ECA369 /* StatBO.swift in Sources */,
 				34141AB32B70225F00ECA369 /* PokemonListResponseBO.swift in Sources */,
 				34141AB72B7022BE00ECA369 /* PokemonDetailResponseBO.swift in Sources */,
+				34141ADD2B7055E300ECA369 /* StatResponseBO.swift in Sources */,
 				34141AC92B70248200ECA369 /* TypeElementMapper.swift in Sources */,
 				340896C32B7005DA002D6451 /* TypeTag.swift in Sources */,
 				34141AB12B7021EF00ECA369 /* TypeElementDTO.swift in Sources */,
+				34141ADF2B7055F100ECA369 /* StatResponseMapper.swift in Sources */,
 				3438B41E2B6E60B50047673C /* PokemonListResponseDTO.swift in Sources */,
 				3438B41A2B6E589F0047673C /* PokemonModel.swift in Sources */,
 				34141ABD2B7022E500ECA369 /* TypeElementBO.swift in Sources */,
 				3438B4202B6E60D00047673C /* PokemonListItemResponseDTO.swift in Sources */,
+				34141AD92B7054DD00ECA369 /* StatMapper.swift in Sources */,
 				3438B40A2B6DB8040047673C /* PokemonListView.swift in Sources */,
+				34141ADB2B7055D500ECA369 /* StatResponseDTO.swift in Sources */,
 				34141AB52B70227B00ECA369 /* PokemonListItemResponseBO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

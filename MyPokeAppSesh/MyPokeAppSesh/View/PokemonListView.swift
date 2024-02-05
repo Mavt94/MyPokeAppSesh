@@ -37,7 +37,7 @@ struct PokemonListView: View {
                     LazyVStack(spacing: 16) {
                         ForEach(model.rows, id: \.id) { row in
                             NavigationLink {
-                                
+                                DetailPokemon(model: row)
                             } label: {
                                 PokemonCellView(model: row)
                             }

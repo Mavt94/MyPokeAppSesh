@@ -16,9 +16,10 @@ struct TypeTag: View {
         Text(name.capitalized)
             .padding(.vertical, 8)
             .padding(.horizontal, 8)
-            .foregroundStyle(.white)
+            .font(.custom(Constants.Font.poppinsRegular, size: 16))
+            .foregroundStyle(.black)
             .background(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 40)
                     .foregroundStyle(Color(hex: color))
             )
     }

@@ -9,6 +9,7 @@ import Foundation
 
 public struct PokemonDetailResponseDTO: Codable, Identifiable {
     public let baseExperience: Int?
+    public let stats: [StatResponseDTO]?
     public let forms: [SpeciesDTO]?
     public let height: Int?
     public let id: Int?
@@ -21,6 +22,7 @@ public struct PokemonDetailResponseDTO: Codable, Identifiable {
     
     enum CodingKeys: String, CodingKey {
         case baseExperience = "base_experience"
+        case stats = "stats"
         case forms = "forms"
         case height = "height"
         case id = "id"
