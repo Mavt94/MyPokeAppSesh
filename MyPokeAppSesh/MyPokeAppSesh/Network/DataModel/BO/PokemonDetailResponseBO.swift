@@ -10,6 +10,7 @@ import Foundation
 public struct PokemonDetailResponseBO {
     public let baseExperience: Int
     public let stats: [StatResponseBO]
+    public let abilities: [AbilityBO]
     public let forms: [SpeciesBO]
     public let height: Int
     public let id: Int
@@ -20,9 +21,10 @@ public struct PokemonDetailResponseBO {
     public let types: [TypeElementBO]
     public let weight: Int
     
-    public init(baseExperience: Int, stats: [StatResponseBO], forms: [SpeciesBO], height: Int, id: Int, name: String, order: Int, species: SpeciesBO, sprites: SpritesBO, types: [TypeElementBO], weight: Int) {
+    public init(baseExperience: Int, stats: [StatResponseBO], abilities: [AbilityBO], forms: [SpeciesBO], height: Int, id: Int, name: String, order: Int, species: SpeciesBO, sprites: SpritesBO, types: [TypeElementBO], weight: Int) {
         self.baseExperience = baseExperience
         self.stats = stats
+        self.abilities = abilities
         self.forms = forms
         self.height = height
         self.id = id
@@ -44,6 +46,8 @@ extension PokemonDetailResponseBO {
                     StatResponseBO(baseStat: 35, stat: StatBO(name: "defense")),
                     StatResponseBO(baseStat: 35, stat: StatBO(name: "attack")),
                     StatResponseBO(baseStat: 35, stat: StatBO(name: "speed"))],
+            abilities: [AbilityBO(ability: SpeciesBO(name: "static")),
+                        AbilityBO(ability: SpeciesBO(name: "lightning-rod"))],
             forms: [SpeciesBO(name: "pikachu")],
             height: 10,
             id: 1,

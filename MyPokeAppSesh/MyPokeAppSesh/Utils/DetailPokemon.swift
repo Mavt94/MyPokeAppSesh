@@ -38,27 +38,47 @@ struct DetailPokemon: View {
                         }
                     }
                     .padding(.vertical, 16)
-                    VStack(alignment: .leading) {
-                        Text(model.baseExperience)
-                            .font(.custom(Constants.Font.poppinsBold, size: 22))
-                        ForEach(model.stats, id: \.self) { stat in
-                            Text(stat)
-                                .font(.custom(Constants.Font.poppinsRegular, size: 22))
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading) {
+                            Text("Stats")
+                                .font(.custom(Constants.Font.poppinsBold, size: 26))
+                                .padding(.bottom, 8)
+                            Text(model.baseExperience)
+                                .font(.custom(Constants.Font.poppinsBold, size: 16))
+                            ForEach(model.stats, id: \.self) { stat in
+                                Text(stat)
+                                    .font(.custom(Constants.Font.poppinsRegular, size: 16))
+                            }
                         }
+                        .padding(.vertical, 16)
+                        .frame(maxWidth: .infinity)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.gray, lineWidth: 4)
+                        )
+                        VStack(alignment: .leading) {
+                            Text("Abilities")
+                                .font(.custom(Constants.Font.poppinsBold, size: 26))
+                                .padding(.bottom, 8)
+                            ForEach(model.abilities, id: \.self) { stat in
+                                Text(stat)
+                                    .font(.custom(Constants.Font.poppinsRegular, size: 16))
+                            }
+                        }
+                        .padding(.vertical, 16)
+                        .frame(maxWidth: .infinity)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.gray, lineWidth: 4)
+                        )
                     }
-                    .padding(.vertical, 16)
-                    .frame(maxWidth: .infinity)
-                    .clipShape(RoundedRectangle(cornerRadius: 55))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 55)
-                            .stroke(Color.gray, lineWidth: 4)
-                    )
                 }
                 
                 Spacer()
                 
                 HStack {
-                    Text("Shiny form:")
+                    Text("Shiny form")
+                        .font(.custom(Constants.Font.poppinsRegular, size: 22))
                     Spacer()
                     AsyncImage(url: URL(string: model.imageShiny)) { image in
                         image

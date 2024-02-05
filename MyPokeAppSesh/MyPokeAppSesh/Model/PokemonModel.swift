@@ -33,6 +33,10 @@ final class PokemonModel {
              "Base exp - \(item.baseExperience)"
          }
          
+         var abilities: [String] {
+             item.abilities.map { $0.ability.name.capitalized }
+         }
+         
          var stats: [String] {
              item.stats.map { "\($0.stat.name.capitalized) - \($0.baseStat)" }
          }
