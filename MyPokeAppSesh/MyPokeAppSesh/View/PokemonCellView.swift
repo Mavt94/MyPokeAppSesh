@@ -9,10 +9,12 @@ import SwiftUI
 
 struct PokemonCellView: View {
     
+    @State var isFavorite: Bool = false
+    
     let model: PokemonModel.Pokemon
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack(alignment: .leading) {
                 Text(model.pokemonNumber)
                     .font(.custom(Constants.Font.poppinsRegular, size: 16))
@@ -28,6 +30,12 @@ struct PokemonCellView: View {
             }
             .padding(.leading, 16)
             Spacer()
+            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                .foregroundColor(isFavorite ? .red : .gray)
+                .imageScale(.large)
+                .onTapGesture {
+                    isFavorite.toggle()
+                }
             AsyncImage(url: URL(string: model.image)) { image in
                 image
                     .resizable()
