@@ -18,3 +18,10 @@ public struct Ability: Codable {
         self.ability = ability
     }
 }
+
+// MARK: Data Model Map
+extension Ability {
+    func toDataModel() -> AbilityData {
+        return AbilityData(ability: ability.toDataModel())
+    }
+}

@@ -24,3 +24,12 @@ public struct PokemonListResponse: Codable {
         self.previousPage = previousPage
     }
 }
+
+// MARK: Data Model Map
+extension PokemonListResponse {
+    func toDataModel() -> PokemonListResponseData {
+        return PokemonListResponseData(results: results.compactMap({ $0.toDataModel() }),
+                                       nextPage: nextPage,
+                                       previousPage: previousPage)
+    }
+}

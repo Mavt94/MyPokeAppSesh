@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PokemonCellView: View {
+    
+    @Environment(\.modelContext) var context
+    
+    @StateObject var viewModel: PokemonCellViewModel = PokemonCellViewModel()
     
     @State var isFavorite: Bool = false
     
@@ -34,6 +39,11 @@ struct PokemonCellView: View {
                 .foregroundColor(isFavorite ? .red : .gray)
                 .imageScale(.large)
                 .onTapGesture {
+                    if !isFavorite {
+                        context.insert(model.item.toDataModel())
+                    } else {
+                        viewModel.deleteItem(context: context, item: model.item.toDataModel())
+                    }
                     isFavorite.toggle()
                 }
             AsyncImage(url: URL(string: model.image)) { image in

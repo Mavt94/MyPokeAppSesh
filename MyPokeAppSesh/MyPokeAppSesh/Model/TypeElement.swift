@@ -18,3 +18,10 @@ public struct TypeElement: Codable {
         self.type = type
     }
 }
+
+// MARK: Data Model Map
+extension TypeElement {
+    func toDataModel() -> TypeElementData {
+        return TypeElementData(type: type.toDataModel())
+    }
+}

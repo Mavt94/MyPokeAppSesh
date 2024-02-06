@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 final class PokemonListViewModel: ObservableObject {
-    @Published private(set) var state: PokemonListDataState<PokemonModel, NetworkError> = .idle
+    @Published private(set) var state: PokemonListDataState<PokemonModel, Error> = .idle
     
     @Published var loadingList: Bool = false
     
@@ -31,31 +31,29 @@ extension PokemonListViewModel {
 
 // MARK: - Public
 extension PokemonListViewModel {
-    func onAppear() {
+    func loadNextPageIfNeeded(model: PokemonModel, row: PokemonModel.Pokemon) async {
         
-    }
-
-    func onDisappear() {
-    }
-    
-    func loadNextPage(url: String, model: PokemonModel) async {
-        loadingList = true
-        do {
-            let list = try await repository.listPokemonResults(url: url)
-            let newPokemon = try await repository.getPokemonDetail(model: list.results)
-            model.addRows(newPokemon)
-            if let newPage = list.nextPage {
-                model.addNewPage(newPage: newPage)
+        guard let nextPage = model.nextPage else { return }
+        
+        if hasReachedEnd(pokemon: row, model: model) {
+            do {
+                loadingList = true
+                let list = try await repository.listPokemonResults(url: nextPage)
+                let newPokemon = try await repository.getPokemonDetail(model: list.results)
+                model.addRows(newPokemon)
+                if let newPage = list.nextPage {
+                    model.addNewPage(newPage: newPage)
+                }
+                state = .loaded(model)
+                loadingList = false
+            } catch {
+                state = .error(error)
             }
-            state = .loaded(model)
-            loadingList = false
-        } catch {
-            print(error)
         }
     }
     
     func hasReachedEnd(pokemon: PokemonModel.Pokemon, model: PokemonModel) -> Bool {
-        model.items[model.items.count - 1].id == pokemon.id
+        model.items[model.items.count - 3].id == pokemon.id
     }
 
     func loadViewModel() {

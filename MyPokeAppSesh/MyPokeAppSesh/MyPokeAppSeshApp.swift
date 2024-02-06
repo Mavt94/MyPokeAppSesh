@@ -6,13 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MyPokeAppSeshApp: App {
 
     var body: some Scene {
         WindowGroup {
-            PokemonListView()
+            TabView {
+                PokemonListView()
+                    .tabItem {
+                        Image(systemName: "menucard")
+                        Text("Pokedex")
+                    }
+                PokemonFavoritesView()
+                    .tabItem {
+                        Image(systemName: "star.fill")
+                        Text("Favorites")
+                    }
+            }
         }
+        .modelContainer(for: [PokemonDetailData.self])
     }
 }

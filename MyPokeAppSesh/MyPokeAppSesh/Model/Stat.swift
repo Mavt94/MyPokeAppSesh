@@ -18,3 +18,10 @@ public struct Stat: Codable {
         self.name = name
     }
 }
+
+// MARK: Data Model Map
+extension Stat {
+    func toDataModel() -> StatData {
+        return StatData(name: name)
+    }
+}

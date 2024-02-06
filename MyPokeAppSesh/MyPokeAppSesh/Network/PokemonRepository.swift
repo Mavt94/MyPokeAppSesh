@@ -8,19 +8,13 @@
 import Foundation
 import SwiftUI
 
-enum NetworkError: Error {
-    case invalidURL
-    case invalidResponse
-    case invalidData
-}
-
 public final class PokemonRepository {
     
     public init() {
     }
     
     public func pokemonListFirstLoad() async throws -> PokemonListResponse {
-        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=10") else { throw NetworkError.invalidURL }
+        guard let url = URL(string: Constants.URL.pokeAPIListUrl) else { throw NetworkError.invalidURL }
         
         let (data, response) = try await URLSession.shared.data(from: url)
         

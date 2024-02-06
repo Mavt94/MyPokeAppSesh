@@ -52,6 +52,24 @@ public struct PokemonDetailResponse: Codable {
     }
 }
 
+// MARK: Data Model Map
+extension PokemonDetailResponse {
+    func toDataModel() -> PokemonDetailData {
+        return PokemonDetailData(baseExperience: baseExperience,
+                                 stats: stats.compactMap({ $0.toDataModel() }),
+                                 abilities: abilities.compactMap({ $0.toDataModel() }),
+                                 forms: forms.compactMap({ $0.toDataModel() }),
+                                 height: height,
+                                 id: id,
+                                 name: name,
+                                 order: order,
+                                 species: species.toDataModel(),
+                                 sprites: sprites.toDataModel(),
+                                 types: types.compactMap({ $0.toDataModel() }),
+                                 weight: weight)
+    }
+}
+
 // MARK: Mock
 extension PokemonDetailResponse {
     static func mock() -> PokemonDetailResponse {

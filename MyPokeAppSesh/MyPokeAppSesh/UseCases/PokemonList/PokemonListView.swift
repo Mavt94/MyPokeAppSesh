@@ -6,19 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PokemonListView: View {
+    
+    @Environment(\.modelContext) private var modelContext
+    @Query private var items: [PokemonDetailData]
     
     @StateObject var viewModel: PokemonListViewModel = PokemonListViewModel()
     
     var body: some View {
-        VStack {
-            content
-        }.onAppear {
-            viewModel.onAppear()
-        }.onDisappear {
-            viewModel.onDisappear()
-        }
+        content
     }
     
     @ViewBuilder
@@ -30,35 +28,28 @@ struct PokemonListView: View {
                     viewModel.loadViewModel()
                 }
         case .loading:
-            Text("Loading")
+            ProgressView()
         case let .loaded(model):
             NavigationView {
                 ScrollView {
-                    ScrollViewReader { reader in
-                        LazyVStack(spacing: 16) {
-                            ForEach(model.rows, id: \.id) { row in
-                                NavigationLink {
-                                    PokemonDetail(model: row)
-                                } label: {
-                                    PokemonCellView(model: row)
-                                        .id(row.id)
-                                        .onAppear {
-                                            Task {
-                                                if viewModel.hasReachedEnd(pokemon: row, model: model) {
-                                                    print("Last item")
-//                                                    reader.scrollTo(row.id, anchor: .bottom)
-                                                    await viewModel.loadNextPage(url: model.nextPage, model: model)
-                                                }
-                                            }
+                    LazyVStack(spacing: 16) {
+                        ForEach(model.rows, id: \.id) { row in
+                            NavigationLink {
+                                PokemonDetailView(model: row)
+                            } label: {
+                                PokemonCellView(model: row)
+                                    .onAppear {
+                                        Task {
+                                            await viewModel.loadNextPageIfNeeded(model: model, row: row)
                                         }
-                                }
-                            }
-                            if viewModel.loadingList {
-                                ProgressView()
+                                    }
                             }
                         }
-                        .padding(.horizontal, 8)
+                        if viewModel.loadingList {
+                            ProgressView()
+                        }
                     }
+                    .padding(.horizontal, 8)
                 }
             }
         case .error(let error):

@@ -10,14 +10,14 @@ import Foundation
 final class PokemonModel {
     var list: PokemonListResponse
     var items: [PokemonDetailResponse]
-    var nextPage: String
+    var nextPage: String?
 
     lazy var rows: [Pokemon] = generateRows()
     
     public init(list: PokemonListResponse, items: [PokemonDetailResponse]) {
         self.list = list
         self.items = items
-        nextPage = list.nextPage ?? ""
+        nextPage = list.nextPage
     }
     
     func addRows(_ newItems: [PokemonDetailResponse]) {
@@ -55,7 +55,7 @@ final class PokemonModel {
          }
          
          var pokemonNumber: String {
-             id < 10 ? "Nº 00\(id)" : (id) < 100 ? "Nº 0\(id)" : "Nº \(id)"
+             String(format: "Nº %03d", id)
          }
          
          var name: String {
@@ -119,7 +119,7 @@ final class PokemonModel {
              case "dragon":
                  return "6F35FC"
              default:
-                 return ""
+                 return "A8A77A"
              }
          }
          

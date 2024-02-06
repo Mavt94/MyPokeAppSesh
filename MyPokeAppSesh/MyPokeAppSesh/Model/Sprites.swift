@@ -27,3 +27,13 @@ public class Sprites: Codable {
         self.frontShiny = frontShiny
     }
 }
+
+// MARK: Data Model Map
+extension Sprites {
+    func toDataModel() -> SpritesData {
+        return SpritesData(backDefault: backDefault,
+                           backShiny: backShiny,
+                           frontDefault: frontDefault,
+                           frontShiny: frontShiny)
+    }
+}

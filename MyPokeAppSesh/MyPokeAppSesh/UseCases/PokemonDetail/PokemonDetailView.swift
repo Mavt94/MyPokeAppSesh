@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PokemonDetail: View {
+struct PokemonDetailView: View {
     
     var model: PokemonModel.Pokemon
     
@@ -40,7 +40,7 @@ struct PokemonDetail: View {
                     .padding(.vertical, 16)
                     HStack(alignment: .top) {
                         VStack(alignment: .leading) {
-                            Text("Stats")
+                            Text(Constants.statsTitle)
                                 .font(.custom(Constants.Font.poppinsBold, size: 26))
                                 .padding(.bottom, 8)
                             Text(model.baseExperience)
@@ -59,7 +59,7 @@ struct PokemonDetail: View {
                                 .stroke(Color.gray, lineWidth: 4)
                         )
                         VStack(alignment: .leading) {
-                            Text("Abilities")
+                            Text(Constants.abilitiesTitle)
                                 .font(.custom(Constants.Font.poppinsBold, size: 26))
                                 .padding(.bottom, 8)
                             ForEach(model.abilities, id: \.self) { stat in
@@ -82,7 +82,7 @@ struct PokemonDetail: View {
                 Spacer()
                 
                 HStack {
-                    Text("Shiny form")
+                    Text(Constants.shinyForm)
                         .font(.custom(Constants.Font.poppinsRegular, size: 22))
                     Spacer()
                     AsyncImage(url: URL(string: model.imageShiny)) { image in
@@ -120,5 +120,5 @@ struct PokemonDetail: View {
 }
 
 #Preview {
-    PokemonDetail(model: PokemonModel.Pokemon.mock())
+    PokemonDetailView(model: PokemonModel.Pokemon.mock())
 }

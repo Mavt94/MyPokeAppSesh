@@ -21,3 +21,11 @@ public struct PokemonResultItemResponse: Codable {
         self.url = url
     }
 }
+
+// MARK: Data Model Map
+extension PokemonResultItemResponse {
+    func toDataModel() -> PokemonResultItemResponseData {
+        return PokemonResultItemResponseData(name: name,
+                                             url: url)
+    }
+}

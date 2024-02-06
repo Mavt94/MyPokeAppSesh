@@ -21,3 +21,10 @@ public struct StatResponse: Codable {
         self.stat = stat
     }
 }
+
+// MARK: Data Model Map
+extension StatResponse {
+    func toDataModel() -> StatResponseData {
+        return StatResponseData(baseStat: baseStat, stat: stat.toDataModel())
+    }
+}
