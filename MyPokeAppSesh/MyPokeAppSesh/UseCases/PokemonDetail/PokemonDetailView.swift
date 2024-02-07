@@ -33,7 +33,7 @@ struct PokemonDetailView: View {
                     Text(model.name)
                         .font(.custom(Constants.Font.poppinsBold, size: 24))
                     HStack {
-                        ForEach(model.types, id: \.self) { type in
+                        ForEach(model.types.sorted(), id: \.self) { type in
                             TypeTagView(name: type, color: model.colorForType(type))
                         }
                     }
@@ -114,7 +114,7 @@ struct PokemonDetailView: View {
             .padding(.horizontal, 16)
         }
         .background(
-            Color(hex: model.colorForType(model.principalType)).opacity(0.4)
+            Color(hex: model.backgroundColor).opacity(0.4)
         )
     }
 }
