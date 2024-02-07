@@ -17,4 +17,14 @@ final class PokemonCellViewModel: ObservableObject {
             pokemon.id == itemId
         })
     }
+    
+    func checkFavorite(dataItems: [PokemonDetailData], id: Int) -> Bool {
+        var checked = false
+        for dataItem in dataItems {
+            if dataItem.id == id {
+                checked = true
+            }
+        }
+        return checked
+    }
 }

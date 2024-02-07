@@ -16,3 +16,10 @@ public class AbilityData {
         self.ability = ability
     }
 }
+
+// MARK: Data Model Map
+extension AbilityData {
+    func toResponseModel() -> Ability {
+        return Ability(ability: ability.toResponseModel())
+    }
+}

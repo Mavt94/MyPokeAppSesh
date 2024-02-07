@@ -79,7 +79,7 @@ final class PokemonModel {
          }
          
          var backgroundColor: String {
-             colorForType(item.types.first?.type.name)
+             colorForType(self.types.sorted().first)
          }
          
          func colorForType(_ typeName: String?) -> String {

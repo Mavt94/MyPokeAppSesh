@@ -11,12 +11,12 @@ import SwiftData
 struct PokemonCellView: View {
     
     @Environment(\.modelContext) var context
+    @Query private var dataItems: [PokemonDetailData]
     
     @StateObject var viewModel: PokemonCellViewModel = PokemonCellViewModel()
     
-    @State var isFavorite: Bool = false
-    
     let model: PokemonModel.Pokemon
+    @State var isFavorite: Bool = false
     
     var body: some View {
         HStack(alignment: .top) {
@@ -28,7 +28,7 @@ struct PokemonCellView: View {
                     .font(.custom(Constants.Font.poppinsRegular, size: 24))
                     .foregroundStyle(.black)
                 HStack {
-                    ForEach(model.types, id: \.self) { type in
+                    ForEach(model.types.sorted(), id: \.self) { type in
                         TypeTagView(name: type, color: model.colorForType(type))
                     }
                 }
@@ -65,6 +65,9 @@ struct PokemonCellView: View {
         .frame(height: 120)
         .background(Color(hex: model.backgroundColor).opacity(0.2))
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .onAppear {
+            isFavorite = viewModel.checkFavorite(dataItems: dataItems, id: model.id)
+        }
     }
 }
 

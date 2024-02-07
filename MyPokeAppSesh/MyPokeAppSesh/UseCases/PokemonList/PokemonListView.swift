@@ -11,8 +11,7 @@ import SwiftData
 struct PokemonListView: View {
     
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [PokemonDetailData]
-    
+    @Query private var dataItems: [PokemonDetailData]
     @StateObject var viewModel: PokemonListViewModel = PokemonListViewModel()
     
     var body: some View {
@@ -50,6 +49,18 @@ struct PokemonListView: View {
                         }
                     }
                     .padding(.horizontal, 8)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        NavigationLink {
+                            PokemonFavoritesView()
+                        } label: {
+                            VStack {
+                                Image(systemName: "star.fill")
+                                Text("Favorites")
+                            }
+                        }
+                    }
                 }
             }
         case .error(let error):

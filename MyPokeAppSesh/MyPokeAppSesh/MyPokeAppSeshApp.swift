@@ -13,18 +13,7 @@ struct MyPokeAppSeshApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabView {
-                PokemonListView()
-                    .tabItem {
-                        Image(systemName: "menucard")
-                        Text("Pokedex")
-                    }
-                PokemonFavoritesView()
-                    .tabItem {
-                        Image(systemName: "star.fill")
-                        Text("Favorites")
-                    }
-            }
+            PokemonListView()
         }
         .modelContainer(for: [PokemonDetailData.self])
     }

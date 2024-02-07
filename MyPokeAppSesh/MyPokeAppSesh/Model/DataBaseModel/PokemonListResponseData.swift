@@ -20,3 +20,11 @@ final class PokemonListResponseData: Identifiable {
         self.previousPage = previousPage
     }
 }
+
+extension PokemonListResponseData {
+    func toResponseModel() -> PokemonListResponse {
+        return PokemonListResponse(results: results.compactMap({ $0.toResponseModel() }),
+                                   nextPage: nextPage,
+                                   previousPage: previousPage)
+    }
+}

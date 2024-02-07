@@ -18,3 +18,10 @@ public class StatResponseData {
         self.stat = stat
     }
 }
+
+// MARK: Data Model Map
+extension StatResponseData {
+    func toResponseModel() -> StatResponse {
+        return StatResponse(baseStat: baseStat, stat: stat.toResponseModel())
+    }
+}

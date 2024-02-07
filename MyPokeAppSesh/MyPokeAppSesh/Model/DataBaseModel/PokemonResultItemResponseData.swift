@@ -18,3 +18,10 @@ final class PokemonResultItemResponseData: Identifiable {
         self.url = url
     }
 }
+
+extension PokemonResultItemResponseData {
+    func toResponseModel() -> PokemonResultItemResponse {
+        return PokemonResultItemResponse(name: name,
+                                         url: url)
+    }
+}

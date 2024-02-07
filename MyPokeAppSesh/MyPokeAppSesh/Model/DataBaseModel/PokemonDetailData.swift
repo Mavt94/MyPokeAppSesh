@@ -38,3 +38,20 @@ final class PokemonDetailData: Identifiable {
         self.weight = weight
     }
 }
+
+extension PokemonDetailData {
+    func toResponseModel() -> PokemonDetailResponse {
+        return PokemonDetailResponse(baseExperience: baseExperience,
+                                     stats: stats.compactMap({ $0.toResponseModel() }),
+                                     abilities: abilities.compactMap({ $0.toResponseModel() }),
+                                     forms: forms.compactMap({ $0.toResponseModel() }),
+                                     height: height,
+                                     id: id,
+                                     name: name,
+                                     order: order,
+                                     species: species.toResponseModel(),
+                                     sprites: sprites.toResponseModel(),
+                                     types: types.compactMap({ $0.toResponseModel() }),
+                                     weight: weight)
+    }
+}

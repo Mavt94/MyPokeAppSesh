@@ -170,7 +170,7 @@
 				34141ADC2B7055E300ECA369 /* StatResponse.swift */,
 				349650A72B7061AD00E27543 /* Ability.swift */,
 				3438B4172B6E589F0047673C /* PokemonModel.swift */,
-				3476BD802B72AD100072644A /* DataModel */,
+				3476BD802B72AD100072644A /* DataBaseModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,7 +228,7 @@
 			path = PokemonFavorites;
 			sourceTree = "<group>";
 		};
-		3476BD802B72AD100072644A /* DataModel */ = {
+		3476BD802B72AD100072644A /* DataBaseModel */ = {
 			isa = PBXGroup;
 			children = (
 				3476BD8F2B72BB930072644A /* PokemonListResponseData.swift */,
@@ -241,7 +241,7 @@
 				3476BD892B72AD9C0072644A /* TypeElementData.swift */,
 				3476BD8B2B72B0060072644A /* StatData.swift */,
 			);
-			path = DataModel;
+			path = DataBaseModel;
 			sourceTree = "<group>";
 		};
 		349650C92B717BEB00E27543 /* PokemonList */ = {

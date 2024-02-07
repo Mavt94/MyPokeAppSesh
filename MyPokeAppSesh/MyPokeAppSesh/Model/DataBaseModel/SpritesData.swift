@@ -22,3 +22,13 @@ public class SpritesData {
         self.frontShiny = frontShiny
     }
 }
+
+// MARK: Data Model Map
+extension SpritesData {
+    func toResponseModel() -> Sprites {
+        return Sprites(backDefault: backDefault,
+                           backShiny: backShiny,
+                           frontDefault: frontDefault,
+                           frontShiny: frontShiny)
+    }
+}

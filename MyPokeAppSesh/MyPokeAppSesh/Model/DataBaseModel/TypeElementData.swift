@@ -16,3 +16,9 @@ public class TypeElementData {
         self.type = type
     }
 }
+
+extension TypeElementData {
+    func toResponseModel() -> TypeElement {
+        return TypeElement(type: type.toResponseModel())
+    }
+}
